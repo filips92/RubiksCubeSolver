@@ -229,6 +229,246 @@ namespace RubiksCubeSolver.Tests
             #region TESTS
             Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[0, 0]);
             Assert.AreEqual(TileColors.Orange, cube.RightFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.White, cube.RightFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.White, cube.RightFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube.FrontFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.FrontFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube.UpperFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.UpperFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Orange, cube.UpperFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.UpperFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Blue, cube.RearFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.RearFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Red, cube.RearFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.RearFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Orange, cube.BottomFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Green, cube.BottomFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Blue, cube.BottomFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Green, cube.BottomFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Red, cube.LeftFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.LeftFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Red, cube.LeftFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.LeftFace.Tiles[1, 1]);
+            #endregion
+        }
+
+        [TestMethod]
+        public void TestReverseRotateLeft()
+        {
+            Cube cube = GetMockCube();
+
+            cube.ReverseRotateLeft();
+
+            #region TESTS
+            Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.RightFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.RightFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube.FrontFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Orange, cube.FrontFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Blue, cube.UpperFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.UpperFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Yellow, cube.UpperFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.UpperFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Blue, cube.RearFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.RearFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Red, cube.RearFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Green, cube.RearFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube.BottomFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Green, cube.BottomFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.White, cube.BottomFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.BottomFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.White, cube.LeftFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Red, cube.LeftFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Orange, cube.LeftFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.LeftFace.Tiles[1, 1]);
+            #endregion
+        }
+
+        [TestMethod]
+        public void TestReverseRotateRight()
+        {
+            Cube cube = GetMockCube();
+
+            cube.ReverseRotateRight();
+
+            #region TESTS
+            Assert.AreEqual(TileColors.Orange, cube.RightFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.RightFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube.FrontFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.FrontFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.FrontFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube.UpperFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Red, cube.UpperFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Orange, cube.UpperFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.UpperFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Blue, cube.RearFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.RearFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Green, cube.RearFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.RearFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube.BottomFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.White, cube.BottomFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Orange, cube.BottomFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.White, cube.BottomFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Red, cube.LeftFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.LeftFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.White, cube.LeftFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.LeftFace.Tiles[1, 1]);
+            #endregion
+        }
+
+        [TestMethod]
+        public void TestReverseRotateFront()
+        {
+            Cube cube = GetMockCube();
+
+            cube.ReverseRotateFront();
+
+            #region TESTS
+            Assert.AreEqual(TileColors.Green, cube.RightFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.RightFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Green, cube.RightFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.RightFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Green, cube.FrontFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube.UpperFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.UpperFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Red, cube.UpperFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Red, cube.UpperFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Blue, cube.RearFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.RearFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Red, cube.RearFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.RearFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Yellow, cube.BottomFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.BottomFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Orange, cube.BottomFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.BottomFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Red, cube.LeftFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.LeftFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.White, cube.LeftFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.LeftFace.Tiles[1, 1]);
+            #endregion
+        }
+
+        [TestMethod]
+        public void TestReverseRotateRear()
+        {
+            Cube cube = GetMockCube();
+
+            cube.ReverseRotateRear();
+
+            #region TESTS
+            Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Green, cube.RightFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.RightFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube.FrontFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.White, cube.UpperFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Red, cube.UpperFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Orange, cube.UpperFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.UpperFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Yellow, cube.RearFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.RearFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Blue, cube.RearFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Red, cube.RearFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube.BottomFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Green, cube.BottomFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Yellow, cube.BottomFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.BottomFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Orange, cube.LeftFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.LeftFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Blue, cube.LeftFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.LeftFace.Tiles[1, 1]);
+            #endregion
+        }
+
+        [TestMethod]
+        public void TestReverseRotateUpper()
+        {
+            Cube cube = GetMockCube();
+
+            cube.ReverseRotateUpper();
+
+            #region TESTS
+            Assert.AreEqual(TileColors.Green, cube.RightFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.White, cube.RightFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.RightFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Red, cube.FrontFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.FrontFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.White, cube.FrontFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Yellow, cube.UpperFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.UpperFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Green, cube.UpperFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.UpperFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Red, cube.RearFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.RearFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Red, cube.RearFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.RearFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube.BottomFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Green, cube.BottomFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Orange, cube.BottomFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube.BottomFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Blue, cube.LeftFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube.LeftFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.White, cube.LeftFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.LeftFace.Tiles[1, 1]);
+            #endregion
+        }
+
+        [TestMethod]
+        public void TestReverseRotateBottom()
+        {
+            Cube cube = GetMockCube();
+
+            cube.ReverseRotateBottom();
+
+            #region TESTS
+            Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Orange, cube.RightFace.Tiles[0, 1]);
             Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[1, 0]);
             Assert.AreEqual(TileColors.Blue, cube.RightFace.Tiles[1, 1]);
 

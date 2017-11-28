@@ -44,10 +44,28 @@ namespace RubiksCubeSolver.Model
 
             UpperFace.Tiles[0, 0] = frontFaceTopLeftTile;
             UpperFace.Tiles[1, 0] = frontFaceBottomLeftTile;
-
         }
 
-        public void RotateLeftPrime() { }
+        public void ReverseRotateLeft()
+        {
+            var face = LeftFace.Tiles;
+            RotateFaceClockwise(face);
+
+            var frontFaceTopLeftTile = FrontFace.Tiles[0, 0];
+            var frontFaceBottomLeftTile = FrontFace.Tiles[1, 0];
+
+            FrontFace.Tiles[0, 0] = UpperFace.Tiles[0, 0];
+            FrontFace.Tiles[1, 0] = UpperFace.Tiles[1, 0];
+
+            UpperFace.Tiles[0, 0] = RearFace.Tiles[1, 1];
+            UpperFace.Tiles[1, 0] = RearFace.Tiles[0, 1];
+
+            RearFace.Tiles[0, 1] = BottomFace.Tiles[1, 0];
+            RearFace.Tiles[1, 1] = BottomFace.Tiles[0, 0];
+
+            BottomFace.Tiles[0, 0] = frontFaceTopLeftTile;
+            BottomFace.Tiles[1, 0] = frontFaceBottomLeftTile;
+        }
 
         public void RotateRight()
         {
@@ -70,7 +88,26 @@ namespace RubiksCubeSolver.Model
             UpperFace.Tiles[1, 1] = frontFaceBottomRightTile;
         }
 
-        public void RotateRightPrime() { }
+        public void ReverseRotateRight()
+        {
+            var face = RightFace.Tiles;
+            RotateFaceCounterClockwise(face);
+
+            var frontFaceTopRightTile = FrontFace.Tiles[0, 1];
+            var frontFaceBottomRightTile = FrontFace.Tiles[1, 1];
+
+            FrontFace.Tiles[0, 1] = UpperFace.Tiles[0, 1];
+            FrontFace.Tiles[1, 1] = UpperFace.Tiles[1, 1];
+
+            UpperFace.Tiles[0, 1] = RearFace.Tiles[1, 0];
+            UpperFace.Tiles[1, 1] = RearFace.Tiles[0, 0];
+
+            RearFace.Tiles[0, 0] = BottomFace.Tiles[1, 1];
+            RearFace.Tiles[1, 0] = BottomFace.Tiles[0, 1];
+
+            BottomFace.Tiles[0, 1] = frontFaceTopRightTile;
+            BottomFace.Tiles[1, 1] = frontFaceBottomRightTile;
+        }
 
         public void RotateFront()
         {
@@ -92,7 +129,27 @@ namespace RubiksCubeSolver.Model
             UpperFace.Tiles[1, 0] = leftFaceBottomRightTile;
             UpperFace.Tiles[1, 1] = leftFaceTopRightTile;
         }
-        public void RotateFrontPrime() { }
+
+        public void ReverseRotateFront()
+        {
+            var face = FrontFace.Tiles;
+            RotateFaceCounterClockwise(face);
+
+            var leftFaceTopRightTile = LeftFace.Tiles[0, 1];
+            var leftFaceBottomRightTile = LeftFace.Tiles[1, 1];
+
+            LeftFace.Tiles[0, 1] = UpperFace.Tiles[1, 1];
+            LeftFace.Tiles[1, 1] = UpperFace.Tiles[1, 0];
+
+            UpperFace.Tiles[1, 0] = RightFace.Tiles[0, 0];
+            UpperFace.Tiles[1, 1] = RightFace.Tiles[1, 0];
+
+            RightFace.Tiles[0, 0] = BottomFace.Tiles[0, 1];
+            RightFace.Tiles[1, 0] = BottomFace.Tiles[0, 0];
+
+            BottomFace.Tiles[0, 0] = leftFaceTopRightTile;
+            BottomFace.Tiles[0, 1] = leftFaceBottomRightTile;
+        }
 
         public void RotateRear()
         {
@@ -114,7 +171,27 @@ namespace RubiksCubeSolver.Model
             UpperFace.Tiles[0, 0] = rightFaceTopRightTile;
             UpperFace.Tiles[0, 1] = rightFaceBottomRightTile;
         }
-        public void RotateRearPrime() { }
+
+        public void ReverseRotateRear()
+        {
+            var face = RearFace.Tiles;
+            RotateFaceCounterClockwise(face);
+
+            var rightFaceTopRightTile = RightFace.Tiles[0, 1];
+            var rightFaceBottomRightTile = RightFace.Tiles[1, 1];
+
+            RightFace.Tiles[0, 1] = UpperFace.Tiles[0, 0];
+            RightFace.Tiles[1, 1] = UpperFace.Tiles[0, 1];
+
+            UpperFace.Tiles[0, 0] = LeftFace.Tiles[1, 0];
+            UpperFace.Tiles[0, 1] = LeftFace.Tiles[0, 0];
+
+            LeftFace.Tiles[0, 0] = BottomFace.Tiles[1, 0];
+            LeftFace.Tiles[1, 0] = BottomFace.Tiles[1, 1];
+
+            BottomFace.Tiles[1, 1] = rightFaceTopRightTile;
+            BottomFace.Tiles[1, 0] = rightFaceBottomRightTile;
+        }
 
         public void RotateUpper()
         {
@@ -136,9 +213,50 @@ namespace RubiksCubeSolver.Model
             RearFace.Tiles[0, 0] = leftFaceTopLeftTile;
             RearFace.Tiles[0, 1] = leftFaceTopRightTile;
         }
-        public void RotateUpperPrime() { }
+
+        public void ReverseRotateUpper()
+        {
+            var face = UpperFace.Tiles;
+            RotateFaceCounterClockwise(face);
+
+            var leftFaceTopLeftTile = LeftFace.Tiles[0, 0];
+            var leftFaceTopRightTile = LeftFace.Tiles[0, 1];
+
+            LeftFace.Tiles[0, 0] = RearFace.Tiles[0, 0];
+            LeftFace.Tiles[0, 1] = RearFace.Tiles[0, 1];
+
+            RearFace.Tiles[0, 0] = RightFace.Tiles[0, 0];
+            RearFace.Tiles[0, 1] = RightFace.Tiles[0, 1];
+
+            RightFace.Tiles[0, 0] = FrontFace.Tiles[0, 0];
+            RightFace.Tiles[0, 1] = FrontFace.Tiles[0, 1];
+
+            FrontFace.Tiles[0, 0] = leftFaceTopLeftTile;
+            FrontFace.Tiles[0, 1] = leftFaceTopRightTile;
+        }
 
         public void RotateBottom()
+        {
+            var face = BottomFace.Tiles;
+            RotateFaceClockwise(face);
+
+            var leftFaceBottomLeftTile = LeftFace.Tiles[1, 0];
+            var leftFaceBottomRightTile = LeftFace.Tiles[1, 1];
+
+            LeftFace.Tiles[1, 0] = RearFace.Tiles[1, 0];
+            LeftFace.Tiles[1, 1] = RearFace.Tiles[1, 1];
+
+            RearFace.Tiles[1, 0] = RightFace.Tiles[1, 0];
+            RearFace.Tiles[1, 1] = RightFace.Tiles[1, 1];
+
+            RightFace.Tiles[1, 0] = FrontFace.Tiles[1, 0];
+            RightFace.Tiles[1, 1] = FrontFace.Tiles[1, 1];
+
+            FrontFace.Tiles[1, 0] = leftFaceBottomLeftTile;
+            FrontFace.Tiles[1, 1] = leftFaceBottomRightTile;
+        }
+
+        public void ReverseRotateBottom()
         {
             var face = BottomFace.Tiles;
             RotateFaceCounterClockwise(face);
@@ -158,7 +276,6 @@ namespace RubiksCubeSolver.Model
             RearFace.Tiles[1, 0] = leftFaceBottomLeftTile;
             RearFace.Tiles[1, 1] = leftFaceBottomRightTile;
         }
-        public void RotateBottomPrime() { }
 
         private void RotateFaceClockwise(TileColors[,] face)
         {
