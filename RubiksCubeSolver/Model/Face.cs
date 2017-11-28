@@ -2,21 +2,21 @@
 {
     public class Face
     {
-        public Colors[,] Tiles { get; set; }
+        public TileColors[,] Tiles { get; set; }
         public Face()
         {
-            Tiles = new Colors[2,2];
+            Tiles = new TileColors[2,2];
         }
-        public Face(Colors color)
+        public Face(TileColors color)
         {
-            Tiles = new Colors[2, 2] { 
+            Tiles = new TileColors[2, 2] { 
                 { color, color }, 
                 { color, color }
             };
         }
     }
 
-    public enum Colors
+    public enum TileColors
     {
         White,
         Yellow,
