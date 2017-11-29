@@ -294,5 +294,17 @@ namespace RubiksCubeSolver.Model
             face[1, 1] = face[1, 0];
             face[1, 0] = temp;
         }
+
+        public bool Equals(Cube cube)
+        {
+            return (
+                LeftFace.Equals(cube.LeftFace) &&
+                RightFace.Equals(cube.RightFace) &&
+                FrontFace.Equals(cube.FrontFace) &&
+                RearFace.Equals(cube.RearFace) &&
+                UpperFace.Equals(cube.UpperFace) &&
+                BottomFace.Equals(cube.BottomFace)
+            );
+        }
     }
 }

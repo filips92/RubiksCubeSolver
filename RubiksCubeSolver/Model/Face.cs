@@ -14,6 +14,16 @@
                 { color, color }
             };
         }
+
+        public bool Equals(Face face)
+        {
+            return (
+                Tiles[0, 0] == face.Tiles[0, 0] && 
+                Tiles[0, 1] == face.Tiles[0, 1] && 
+                Tiles[1, 0] == face.Tiles[1, 0] && 
+                Tiles[1, 1] == face.Tiles[1, 1]
+            );
+        }
     }
 
     public enum TileColors

@@ -5,7 +5,7 @@ using RubiksCubeSolver.Model;
 namespace RubiksCubeSolver.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class CubeTest
     {
         [TestMethod]
         public void TestFaceConstructor()
@@ -17,6 +17,77 @@ namespace RubiksCubeSolver.Tests
             Assert.AreEqual(TileColors.White, tiles[0, 1]);
             Assert.AreEqual(TileColors.White, tiles[1, 0]);
             Assert.AreEqual(TileColors.White, tiles[1, 1]);
+        }
+
+        [TestMethod]
+        public void TestSameFacesEqualsMethod()
+        {
+            Face face1 = new Face(TileColors.Blue);
+            Face face2 = new Face(TileColors.Blue);
+
+            Assert.IsTrue(face1.Equals(face2));
+        }
+
+        [TestMethod]
+        public void TestDifferentFacesEqualsMethod()
+        {
+            Face face1 = new Face(TileColors.Blue);
+            Face face2 = new Face(TileColors.Blue);
+            face2.Tiles[0, 1] = TileColors.Green;
+
+            Assert.IsFalse(face1.Equals(face2));
+        }
+
+        [TestMethod]
+        public void TestSameCubesEqualsMethod()
+        {
+            Cube cube1 = new Cube()
+            {
+                BottomFace = new Face(TileColors.Blue),
+                FrontFace = new Face(TileColors.Green),
+                LeftFace = new Face(TileColors.Orange),
+                RearFace = new Face(TileColors.Red),
+                RightFace = new Face(TileColors.White),
+                UpperFace = new Face(TileColors.Yellow)
+            };
+
+            Cube cube2 = new Cube()
+            {
+                BottomFace = new Face(TileColors.Blue),
+                FrontFace = new Face(TileColors.Green),
+                LeftFace = new Face(TileColors.Orange),
+                RearFace = new Face(TileColors.Red),
+                RightFace = new Face(TileColors.White),
+                UpperFace = new Face(TileColors.Yellow)
+            };
+
+            Assert.IsTrue(cube1.Equals(cube2));
+        }
+
+        [TestMethod]
+        public void TestDifferentCubesEqualsMethod()
+        {
+            Cube cube1 = new Cube()
+            {
+                BottomFace = new Face(TileColors.Blue),
+                FrontFace = new Face(TileColors.Green),
+                LeftFace = new Face(TileColors.Orange),
+                RearFace = new Face(TileColors.Red),
+                RightFace = new Face(TileColors.White),
+                UpperFace = new Face(TileColors.Yellow)
+            };
+
+            Cube cube2 = new Cube()
+            {
+                BottomFace = new Face(TileColors.Blue),
+                FrontFace = new Face(TileColors.Blue),
+                LeftFace = new Face(TileColors.Orange),
+                RearFace = new Face(TileColors.Red),
+                RightFace = new Face(TileColors.White),
+                UpperFace = new Face(TileColors.Yellow)
+            };
+
+            Assert.IsFalse(cube1.Equals(cube2));
         }
 
         [TestMethod]
