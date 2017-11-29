@@ -30,12 +30,13 @@ namespace RubiksCubeSolver.Tests
                 UpperFace = new Face(TileColors.White)
             };
 
-            Node rootNode = new Node(cube1, "");
-            rootNode.AddChild(cube2, "test");
+            Node rootNode = new Node(cube1, "", 0);
+            rootNode.AddChild(cube2, "test", rootNode.Depth + 1);
 
             Assert.AreEqual("test", rootNode.Children[0].Move);
             Assert.IsTrue(rootNode.Children[0].ParentNode.State.Equals(cube1));
             Assert.IsTrue(rootNode.Children[0].State.Equals(cube2));
+            Assert.AreEqual(1, rootNode.Children[0].Depth);
         }
     }
 }
