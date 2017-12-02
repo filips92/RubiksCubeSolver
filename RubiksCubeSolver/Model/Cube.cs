@@ -25,256 +25,292 @@ namespace RubiksCubeSolver.Model
             BottomFace = new Face();
         }
 
-        public void RotateLeft()
+        public Cube RotateLeft()
         {
-            var face = LeftFace.Tiles;
+            Cube cube = this.Copy();
+            var face = cube.LeftFace.Tiles;
             RotateFaceCounterClockwise(face);
             
-            var frontFaceTopLeftTile = FrontFace.Tiles[0, 0];
-            var frontFaceBottomLeftTile = FrontFace.Tiles[1, 0];
+            var frontFaceTopLeftTile = cube.FrontFace.Tiles[0, 0];
+            var frontFaceBottomLeftTile = cube.FrontFace.Tiles[1, 0];
 
-            FrontFace.Tiles[0, 0] = BottomFace.Tiles[0, 0];
-            FrontFace.Tiles[1, 0] = BottomFace.Tiles[1, 0];
+            cube.FrontFace.Tiles[0, 0] = cube.BottomFace.Tiles[0, 0];
+            cube.FrontFace.Tiles[1, 0] = cube.BottomFace.Tiles[1, 0];
 
-            BottomFace.Tiles[0, 0] = RearFace.Tiles[1, 1];
-            BottomFace.Tiles[1, 0] = RearFace.Tiles[0, 1];
+            cube.BottomFace.Tiles[0, 0] = cube.RearFace.Tiles[1, 1];
+            cube.BottomFace.Tiles[1, 0] = cube.RearFace.Tiles[0, 1];
 
-            RearFace.Tiles[0, 1] = UpperFace.Tiles[1, 0];
-            RearFace.Tiles[1, 1] = UpperFace.Tiles[0, 0];
+            cube.RearFace.Tiles[0, 1] = cube.UpperFace.Tiles[1, 0];
+            cube.RearFace.Tiles[1, 1] = cube.UpperFace.Tiles[0, 0];
 
-            UpperFace.Tiles[0, 0] = frontFaceTopLeftTile;
-            UpperFace.Tiles[1, 0] = frontFaceBottomLeftTile;
+            cube.UpperFace.Tiles[0, 0] = frontFaceTopLeftTile;
+            cube.UpperFace.Tiles[1, 0] = frontFaceBottomLeftTile;
+
+            return cube;
         }
 
-        public void ReverseRotateLeft()
+        public Cube ReverseRotateLeft()
         {
-            var face = LeftFace.Tiles;
+            Cube cube = this.Copy();
+            var face = cube.LeftFace.Tiles;
             RotateFaceClockwise(face);
 
-            var frontFaceTopLeftTile = FrontFace.Tiles[0, 0];
-            var frontFaceBottomLeftTile = FrontFace.Tiles[1, 0];
+            var frontFaceTopLeftTile = cube.FrontFace.Tiles[0, 0];
+            var frontFaceBottomLeftTile = cube.FrontFace.Tiles[1, 0];
 
-            FrontFace.Tiles[0, 0] = UpperFace.Tiles[0, 0];
-            FrontFace.Tiles[1, 0] = UpperFace.Tiles[1, 0];
+            cube.FrontFace.Tiles[0, 0] = cube.UpperFace.Tiles[0, 0];
+            cube.FrontFace.Tiles[1, 0] = cube.UpperFace.Tiles[1, 0];
 
-            UpperFace.Tiles[0, 0] = RearFace.Tiles[1, 1];
-            UpperFace.Tiles[1, 0] = RearFace.Tiles[0, 1];
+            cube.UpperFace.Tiles[0, 0] = cube.RearFace.Tiles[1, 1];
+            cube.UpperFace.Tiles[1, 0] = cube.RearFace.Tiles[0, 1];
 
-            RearFace.Tiles[0, 1] = BottomFace.Tiles[1, 0];
-            RearFace.Tiles[1, 1] = BottomFace.Tiles[0, 0];
+            cube.RearFace.Tiles[0, 1] = cube.BottomFace.Tiles[1, 0];
+            cube.RearFace.Tiles[1, 1] = cube.BottomFace.Tiles[0, 0];
 
-            BottomFace.Tiles[0, 0] = frontFaceTopLeftTile;
-            BottomFace.Tiles[1, 0] = frontFaceBottomLeftTile;
+            cube.BottomFace.Tiles[0, 0] = frontFaceTopLeftTile;
+            cube.BottomFace.Tiles[1, 0] = frontFaceBottomLeftTile;
+
+            return cube;
         }
 
-        public void RotateRight()
+        public Cube RotateRight()
         {
-            var face = RightFace.Tiles;
+            Cube cube = this.Copy();
+            var face = cube.RightFace.Tiles;
             RotateFaceClockwise(face);
 
-            var frontFaceTopRightTile = FrontFace.Tiles[0, 1];
-            var frontFaceBottomRightTile = FrontFace.Tiles[1, 1];
+            var frontFaceTopRightTile = cube.FrontFace.Tiles[0, 1];
+            var frontFaceBottomRightTile = cube.FrontFace.Tiles[1, 1];
 
-            FrontFace.Tiles[0, 1] = BottomFace.Tiles[0, 1];
-            FrontFace.Tiles[1, 1] = BottomFace.Tiles[1, 1];
+            cube.FrontFace.Tiles[0, 1] = cube.BottomFace.Tiles[0, 1];
+            cube.FrontFace.Tiles[1, 1] = cube.BottomFace.Tiles[1, 1];
 
-            BottomFace.Tiles[0, 1] = RearFace.Tiles[1, 0];
-            BottomFace.Tiles[1, 1] = RearFace.Tiles[0, 0];
+            cube.BottomFace.Tiles[0, 1] = cube.RearFace.Tiles[1, 0];
+            cube.BottomFace.Tiles[1, 1] = cube.RearFace.Tiles[0, 0];
 
-            RearFace.Tiles[0, 0] = UpperFace.Tiles[1, 1];
-            RearFace.Tiles[1, 0] = UpperFace.Tiles[0, 1];
+            cube.RearFace.Tiles[0, 0] = cube.UpperFace.Tiles[1, 1];
+            cube.RearFace.Tiles[1, 0] = cube.UpperFace.Tiles[0, 1];
 
-            UpperFace.Tiles[0, 1] = frontFaceTopRightTile;
-            UpperFace.Tiles[1, 1] = frontFaceBottomRightTile;
+            cube.UpperFace.Tiles[0, 1] = frontFaceTopRightTile;
+            cube.UpperFace.Tiles[1, 1] = frontFaceBottomRightTile;
+
+            return cube;
         }
 
-        public void ReverseRotateRight()
+        public Cube ReverseRotateRight()
         {
-            var face = RightFace.Tiles;
+            Cube cube = this.Copy();
+            var face = cube.RightFace.Tiles;
             RotateFaceCounterClockwise(face);
 
-            var frontFaceTopRightTile = FrontFace.Tiles[0, 1];
-            var frontFaceBottomRightTile = FrontFace.Tiles[1, 1];
+            var frontFaceTopRightTile = cube.FrontFace.Tiles[0, 1];
+            var frontFaceBottomRightTile = cube.FrontFace.Tiles[1, 1];
 
-            FrontFace.Tiles[0, 1] = UpperFace.Tiles[0, 1];
-            FrontFace.Tiles[1, 1] = UpperFace.Tiles[1, 1];
+            cube.FrontFace.Tiles[0, 1] = cube.UpperFace.Tiles[0, 1];
+            cube.FrontFace.Tiles[1, 1] = cube.UpperFace.Tiles[1, 1];
 
-            UpperFace.Tiles[0, 1] = RearFace.Tiles[1, 0];
-            UpperFace.Tiles[1, 1] = RearFace.Tiles[0, 0];
+            cube.UpperFace.Tiles[0, 1] = cube.RearFace.Tiles[1, 0];
+            cube.UpperFace.Tiles[1, 1] = cube.RearFace.Tiles[0, 0];
 
-            RearFace.Tiles[0, 0] = BottomFace.Tiles[1, 1];
-            RearFace.Tiles[1, 0] = BottomFace.Tiles[0, 1];
+            cube.RearFace.Tiles[0, 0] = cube.BottomFace.Tiles[1, 1];
+            cube.RearFace.Tiles[1, 0] = cube.BottomFace.Tiles[0, 1];
 
-            BottomFace.Tiles[0, 1] = frontFaceTopRightTile;
-            BottomFace.Tiles[1, 1] = frontFaceBottomRightTile;
+            cube.BottomFace.Tiles[0, 1] = frontFaceTopRightTile;
+            cube.BottomFace.Tiles[1, 1] = frontFaceBottomRightTile;
+
+            return cube;
         }
 
-        public void RotateFront()
+        public Cube RotateFront()
         {
-            var face = FrontFace.Tiles;
+            Cube cube = this.Copy();
+            var face = cube.FrontFace.Tiles;
             RotateFaceClockwise(face);
 
-            var leftFaceTopRightTile = LeftFace.Tiles[0, 1];
-            var leftFaceBottomRightTile = LeftFace.Tiles[1, 1];
+            var leftFaceTopRightTile = cube.LeftFace.Tiles[0, 1];
+            var leftFaceBottomRightTile = cube.LeftFace.Tiles[1, 1];
 
-            LeftFace.Tiles[0, 1] = BottomFace.Tiles[0, 0];
-            LeftFace.Tiles[1, 1] = BottomFace.Tiles[0, 1];
+            cube.LeftFace.Tiles[0, 1] = cube.BottomFace.Tiles[0, 0];
+            cube.LeftFace.Tiles[1, 1] = cube.BottomFace.Tiles[0, 1];
 
-            BottomFace.Tiles[0, 0] = RightFace.Tiles[1, 0];
-            BottomFace.Tiles[0, 1] = RightFace.Tiles[0, 0];
+            cube.BottomFace.Tiles[0, 0] = cube.RightFace.Tiles[1, 0];
+            cube.BottomFace.Tiles[0, 1] = cube.RightFace.Tiles[0, 0];
 
-            RightFace.Tiles[0, 0] = UpperFace.Tiles[1, 0];
-            RightFace.Tiles[1, 0] = UpperFace.Tiles[1, 1];
+            cube.RightFace.Tiles[0, 0] = cube.UpperFace.Tiles[1, 0];
+            cube.RightFace.Tiles[1, 0] = cube.UpperFace.Tiles[1, 1];
 
-            UpperFace.Tiles[1, 0] = leftFaceBottomRightTile;
-            UpperFace.Tiles[1, 1] = leftFaceTopRightTile;
+            cube.UpperFace.Tiles[1, 0] = leftFaceBottomRightTile;
+            cube.UpperFace.Tiles[1, 1] = leftFaceTopRightTile;
+
+            return cube;
         }
 
-        public void ReverseRotateFront()
+        public Cube ReverseRotateFront()
         {
-            var face = FrontFace.Tiles;
+            Cube cube = this.Copy();
+            var face = cube.FrontFace.Tiles;
             RotateFaceCounterClockwise(face);
 
-            var leftFaceTopRightTile = LeftFace.Tiles[0, 1];
-            var leftFaceBottomRightTile = LeftFace.Tiles[1, 1];
+            var leftFaceTopRightTile = cube.LeftFace.Tiles[0, 1];
+            var leftFaceBottomRightTile = cube.LeftFace.Tiles[1, 1];
 
-            LeftFace.Tiles[0, 1] = UpperFace.Tiles[1, 1];
-            LeftFace.Tiles[1, 1] = UpperFace.Tiles[1, 0];
+            cube.LeftFace.Tiles[0, 1] = cube.UpperFace.Tiles[1, 1];
+            cube.LeftFace.Tiles[1, 1] = cube.UpperFace.Tiles[1, 0];
 
-            UpperFace.Tiles[1, 0] = RightFace.Tiles[0, 0];
-            UpperFace.Tiles[1, 1] = RightFace.Tiles[1, 0];
+            cube.UpperFace.Tiles[1, 0] = cube.RightFace.Tiles[0, 0];
+            cube.UpperFace.Tiles[1, 1] = cube.RightFace.Tiles[1, 0];
 
-            RightFace.Tiles[0, 0] = BottomFace.Tiles[0, 1];
-            RightFace.Tiles[1, 0] = BottomFace.Tiles[0, 0];
+            cube.RightFace.Tiles[0, 0] = cube.BottomFace.Tiles[0, 1];
+            cube.RightFace.Tiles[1, 0] = cube.BottomFace.Tiles[0, 0];
 
-            BottomFace.Tiles[0, 0] = leftFaceTopRightTile;
-            BottomFace.Tiles[0, 1] = leftFaceBottomRightTile;
+            cube.BottomFace.Tiles[0, 0] = leftFaceTopRightTile;
+            cube.BottomFace.Tiles[0, 1] = leftFaceBottomRightTile;
+
+            return cube;
         }
 
-        public void RotateRear()
+        public Cube RotateRear()
         {
-            var face = RearFace.Tiles;
+            Cube cube = this.Copy();
+            var face = cube.RearFace.Tiles;
             RotateFaceClockwise(face);
 
-            var rightFaceTopRightTile = RightFace.Tiles[0, 1];
-            var rightFaceBottomRightTile = RightFace.Tiles[1, 1];
+            var rightFaceTopRightTile = cube.RightFace.Tiles[0, 1];
+            var rightFaceBottomRightTile = cube.RightFace.Tiles[1, 1];
 
-            RightFace.Tiles[0, 1] = BottomFace.Tiles[1, 1];
-            RightFace.Tiles[1, 1] = BottomFace.Tiles[1, 0];
+            cube.RightFace.Tiles[0, 1] = cube.BottomFace.Tiles[1, 1];
+            cube.RightFace.Tiles[1, 1] = cube.BottomFace.Tiles[1, 0];
 
-            BottomFace.Tiles[1, 0] = LeftFace.Tiles[0, 0];
-            BottomFace.Tiles[1, 1] = LeftFace.Tiles[1, 0];
+            cube.BottomFace.Tiles[1, 0] = cube.LeftFace.Tiles[0, 0];
+            cube.BottomFace.Tiles[1, 1] = cube.LeftFace.Tiles[1, 0];
 
-            LeftFace.Tiles[0, 0] = UpperFace.Tiles[0, 1];
-            LeftFace.Tiles[1, 0] = UpperFace.Tiles[0, 0];
+            cube.LeftFace.Tiles[0, 0] = cube.UpperFace.Tiles[0, 1];
+            cube.LeftFace.Tiles[1, 0] = cube.UpperFace.Tiles[0, 0];
 
-            UpperFace.Tiles[0, 0] = rightFaceTopRightTile;
-            UpperFace.Tiles[0, 1] = rightFaceBottomRightTile;
+            cube.UpperFace.Tiles[0, 0] = rightFaceTopRightTile;
+            cube.UpperFace.Tiles[0, 1] = rightFaceBottomRightTile;
+
+            return cube;
         }
 
-        public void ReverseRotateRear()
+        public Cube ReverseRotateRear()
         {
-            var face = RearFace.Tiles;
+            Cube cube = this.Copy();
+            var face = cube.RearFace.Tiles;
             RotateFaceCounterClockwise(face);
 
-            var rightFaceTopRightTile = RightFace.Tiles[0, 1];
-            var rightFaceBottomRightTile = RightFace.Tiles[1, 1];
+            var rightFaceTopRightTile = cube.RightFace.Tiles[0, 1];
+            var rightFaceBottomRightTile = cube.RightFace.Tiles[1, 1];
 
-            RightFace.Tiles[0, 1] = UpperFace.Tiles[0, 0];
-            RightFace.Tiles[1, 1] = UpperFace.Tiles[0, 1];
+            cube.RightFace.Tiles[0, 1] = cube.UpperFace.Tiles[0, 0];
+            cube.RightFace.Tiles[1, 1] = cube.UpperFace.Tiles[0, 1];
 
-            UpperFace.Tiles[0, 0] = LeftFace.Tiles[1, 0];
-            UpperFace.Tiles[0, 1] = LeftFace.Tiles[0, 0];
+            cube.UpperFace.Tiles[0, 0] = cube.LeftFace.Tiles[1, 0];
+            cube.UpperFace.Tiles[0, 1] = cube.LeftFace.Tiles[0, 0];
 
-            LeftFace.Tiles[0, 0] = BottomFace.Tiles[1, 0];
-            LeftFace.Tiles[1, 0] = BottomFace.Tiles[1, 1];
+            cube.LeftFace.Tiles[0, 0] = cube.BottomFace.Tiles[1, 0];
+            cube.LeftFace.Tiles[1, 0] = cube.BottomFace.Tiles[1, 1];
 
-            BottomFace.Tiles[1, 1] = rightFaceTopRightTile;
-            BottomFace.Tiles[1, 0] = rightFaceBottomRightTile;
+            cube.BottomFace.Tiles[1, 1] = rightFaceTopRightTile;
+            cube.BottomFace.Tiles[1, 0] = rightFaceBottomRightTile;
+
+            return cube;
         }
 
-        public void RotateUpper()
+        public Cube RotateUpper()
         {
-            var face = UpperFace.Tiles;
+            Cube cube = this.Copy();
+            var face = cube.UpperFace.Tiles;
             RotateFaceClockwise(face);
 
-            var leftFaceTopLeftTile = LeftFace.Tiles[0, 0];
-            var leftFaceTopRightTile = LeftFace.Tiles[0, 1];
+            var leftFaceTopLeftTile = cube.LeftFace.Tiles[0, 0];
+            var leftFaceTopRightTile = cube.LeftFace.Tiles[0, 1];
 
-            LeftFace.Tiles[0, 0] = FrontFace.Tiles[0, 0];
-            LeftFace.Tiles[0, 1] = FrontFace.Tiles[0, 1];
+            cube.LeftFace.Tiles[0, 0] = cube.FrontFace.Tiles[0, 0];
+            cube.LeftFace.Tiles[0, 1] = cube.FrontFace.Tiles[0, 1];
 
-            FrontFace.Tiles[0, 0] = RightFace.Tiles[0, 0];
-            FrontFace.Tiles[0, 1] = RightFace.Tiles[0, 1];
+            cube.FrontFace.Tiles[0, 0] = cube.RightFace.Tiles[0, 0];
+            cube.FrontFace.Tiles[0, 1] = cube.RightFace.Tiles[0, 1];
 
-            RightFace.Tiles[0, 0] = RearFace.Tiles[0, 0];
-            RightFace.Tiles[0, 1] = RearFace.Tiles[0, 1];
+            cube.RightFace.Tiles[0, 0] = cube.RearFace.Tiles[0, 0];
+            cube.RightFace.Tiles[0, 1] = cube.RearFace.Tiles[0, 1];
 
-            RearFace.Tiles[0, 0] = leftFaceTopLeftTile;
-            RearFace.Tiles[0, 1] = leftFaceTopRightTile;
+            cube.RearFace.Tiles[0, 0] = leftFaceTopLeftTile;
+            cube.RearFace.Tiles[0, 1] = leftFaceTopRightTile;
+
+            return cube;
         }
 
-        public void ReverseRotateUpper()
+        public Cube ReverseRotateUpper()
         {
-            var face = UpperFace.Tiles;
+            Cube cube = this.Copy();
+            var face = cube.UpperFace.Tiles;
             RotateFaceCounterClockwise(face);
 
-            var leftFaceTopLeftTile = LeftFace.Tiles[0, 0];
-            var leftFaceTopRightTile = LeftFace.Tiles[0, 1];
+            var leftFaceTopLeftTile = cube.LeftFace.Tiles[0, 0];
+            var leftFaceTopRightTile = cube.LeftFace.Tiles[0, 1];
 
-            LeftFace.Tiles[0, 0] = RearFace.Tiles[0, 0];
-            LeftFace.Tiles[0, 1] = RearFace.Tiles[0, 1];
+            cube.LeftFace.Tiles[0, 0] = cube.RearFace.Tiles[0, 0];
+            cube.LeftFace.Tiles[0, 1] = cube.RearFace.Tiles[0, 1];
 
-            RearFace.Tiles[0, 0] = RightFace.Tiles[0, 0];
-            RearFace.Tiles[0, 1] = RightFace.Tiles[0, 1];
+            cube.RearFace.Tiles[0, 0] = cube.RightFace.Tiles[0, 0];
+            cube.RearFace.Tiles[0, 1] = cube.RightFace.Tiles[0, 1];
 
-            RightFace.Tiles[0, 0] = FrontFace.Tiles[0, 0];
-            RightFace.Tiles[0, 1] = FrontFace.Tiles[0, 1];
+            cube.RightFace.Tiles[0, 0] = cube.FrontFace.Tiles[0, 0];
+            cube.RightFace.Tiles[0, 1] = cube.FrontFace.Tiles[0, 1];
 
-            FrontFace.Tiles[0, 0] = leftFaceTopLeftTile;
-            FrontFace.Tiles[0, 1] = leftFaceTopRightTile;
+            cube.FrontFace.Tiles[0, 0] = leftFaceTopLeftTile;
+            cube.FrontFace.Tiles[0, 1] = leftFaceTopRightTile;
+
+            return cube;
         }
 
-        public void RotateBottom()
+        public Cube RotateBottom()
         {
-            var face = BottomFace.Tiles;
+            Cube cube = this.Copy();
+            var face = cube.BottomFace.Tiles;
             RotateFaceClockwise(face);
 
-            var leftFaceBottomLeftTile = LeftFace.Tiles[1, 0];
-            var leftFaceBottomRightTile = LeftFace.Tiles[1, 1];
+            var leftFaceBottomLeftTile = cube.LeftFace.Tiles[1, 0];
+            var leftFaceBottomRightTile = cube.LeftFace.Tiles[1, 1];
 
-            LeftFace.Tiles[1, 0] = RearFace.Tiles[1, 0];
-            LeftFace.Tiles[1, 1] = RearFace.Tiles[1, 1];
+            cube.LeftFace.Tiles[1, 0] = cube.RearFace.Tiles[1, 0];
+            cube.LeftFace.Tiles[1, 1] = cube.RearFace.Tiles[1, 1];
 
-            RearFace.Tiles[1, 0] = RightFace.Tiles[1, 0];
-            RearFace.Tiles[1, 1] = RightFace.Tiles[1, 1];
+            cube.RearFace.Tiles[1, 0] = cube.RightFace.Tiles[1, 0];
+            cube.RearFace.Tiles[1, 1] = cube.RightFace.Tiles[1, 1];
 
-            RightFace.Tiles[1, 0] = FrontFace.Tiles[1, 0];
-            RightFace.Tiles[1, 1] = FrontFace.Tiles[1, 1];
+            cube.RightFace.Tiles[1, 0] = cube.FrontFace.Tiles[1, 0];
+            cube.RightFace.Tiles[1, 1] = cube.FrontFace.Tiles[1, 1];
 
-            FrontFace.Tiles[1, 0] = leftFaceBottomLeftTile;
-            FrontFace.Tiles[1, 1] = leftFaceBottomRightTile;
+            cube.FrontFace.Tiles[1, 0] = leftFaceBottomLeftTile;
+            cube.FrontFace.Tiles[1, 1] = leftFaceBottomRightTile;
+
+            return cube;
         }
 
-        public void ReverseRotateBottom()
+        public Cube ReverseRotateBottom()
         {
-            var face = BottomFace.Tiles;
+            Cube cube = this.Copy();
+            var face = cube.BottomFace.Tiles;
             RotateFaceCounterClockwise(face);
 
-            var leftFaceBottomLeftTile = LeftFace.Tiles[1, 0];
-            var leftFaceBottomRightTile = LeftFace.Tiles[1, 1];
+            var leftFaceBottomLeftTile = cube.LeftFace.Tiles[1, 0];
+            var leftFaceBottomRightTile = cube.LeftFace.Tiles[1, 1];
 
-            LeftFace.Tiles[1, 0] = FrontFace.Tiles[1, 0];
-            LeftFace.Tiles[1, 1] = FrontFace.Tiles[1, 1];
+            cube.LeftFace.Tiles[1, 0] = cube.FrontFace.Tiles[1, 0];
+            cube.LeftFace.Tiles[1, 1] = cube.FrontFace.Tiles[1, 1];
 
-            FrontFace.Tiles[1, 0] = RightFace.Tiles[1, 0];
-            FrontFace.Tiles[1, 1] = RightFace.Tiles[1, 1];
+            cube.FrontFace.Tiles[1, 0] = cube.RightFace.Tiles[1, 0];
+            cube.FrontFace.Tiles[1, 1] = cube.RightFace.Tiles[1, 1];
 
-            RightFace.Tiles[1, 0] = RearFace.Tiles[1, 0];
-            RightFace.Tiles[1, 1] = RearFace.Tiles[1, 1];
+            cube.RightFace.Tiles[1, 0] = cube.RearFace.Tiles[1, 0];
+            cube.RightFace.Tiles[1, 1] = cube.RearFace.Tiles[1, 1];
 
-            RearFace.Tiles[1, 0] = leftFaceBottomLeftTile;
-            RearFace.Tiles[1, 1] = leftFaceBottomRightTile;
+            cube.RearFace.Tiles[1, 0] = leftFaceBottomLeftTile;
+            cube.RearFace.Tiles[1, 1] = leftFaceBottomRightTile;
+
+            return cube;
         }
 
         private void RotateFaceClockwise(TileColors[,] face)

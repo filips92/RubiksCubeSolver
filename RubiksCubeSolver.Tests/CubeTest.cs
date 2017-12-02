@@ -193,7 +193,7 @@ namespace RubiksCubeSolver.Tests
         {
             Cube cube = GetMockCube();
 
-            cube.RotateLeft();
+            cube = cube.RotateLeft();
 
             #region TESTS
             Assert.AreEqual(TileColors.Yellow, cube.LeftFace.Tiles[0, 0]);
@@ -233,7 +233,7 @@ namespace RubiksCubeSolver.Tests
         {
             Cube cube = GetMockCube();
 
-            cube.RotateRight();
+            cube = cube.RotateRight();
 
             #region TESTS
             Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[0, 0]);
@@ -273,7 +273,7 @@ namespace RubiksCubeSolver.Tests
         {
             Cube cube = GetMockCube();
 
-            cube.RotateFront();
+            cube = cube.RotateFront();
 
             #region TESTS
             Assert.AreEqual(TileColors.Orange, cube.RightFace.Tiles[0, 0]);
@@ -313,7 +313,7 @@ namespace RubiksCubeSolver.Tests
         {
             Cube cube = GetMockCube();
 
-            cube.RotateRear();
+            cube = cube.RotateRear();
 
             #region TESTS
             Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[0, 0]);
@@ -353,7 +353,7 @@ namespace RubiksCubeSolver.Tests
         {
             Cube cube = GetMockCube();
 
-            cube.RotateUpper();
+            cube = cube.RotateUpper();
 
             #region TESTS
             Assert.AreEqual(TileColors.Blue, cube.RightFace.Tiles[0, 0]);
@@ -393,7 +393,7 @@ namespace RubiksCubeSolver.Tests
         {
             Cube cube = GetMockCube();
 
-            cube.RotateBottom();
+            cube = cube.RotateBottom();
 
             #region TESTS
             Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[0, 0]);
@@ -433,7 +433,7 @@ namespace RubiksCubeSolver.Tests
         {
             Cube cube = GetMockCube();
 
-            cube.ReverseRotateLeft();
+            cube = cube.ReverseRotateLeft();
 
             #region TESTS
             Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[0, 0]);
@@ -473,7 +473,7 @@ namespace RubiksCubeSolver.Tests
         {
             Cube cube = GetMockCube();
 
-            cube.ReverseRotateRight();
+            cube = cube.ReverseRotateRight();
 
             #region TESTS
             Assert.AreEqual(TileColors.Orange, cube.RightFace.Tiles[0, 0]);
@@ -513,7 +513,7 @@ namespace RubiksCubeSolver.Tests
         {
             Cube cube = GetMockCube();
 
-            cube.ReverseRotateFront();
+            cube = cube.ReverseRotateFront();
 
             #region TESTS
             Assert.AreEqual(TileColors.Green, cube.RightFace.Tiles[0, 0]);
@@ -553,7 +553,7 @@ namespace RubiksCubeSolver.Tests
         {
             Cube cube = GetMockCube();
 
-            cube.ReverseRotateRear();
+            cube = cube.ReverseRotateRear();
 
             #region TESTS
             Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[0, 0]);
@@ -593,7 +593,7 @@ namespace RubiksCubeSolver.Tests
         {
             Cube cube = GetMockCube();
 
-            cube.ReverseRotateUpper();
+            cube = cube.ReverseRotateUpper();
 
             #region TESTS
             Assert.AreEqual(TileColors.Green, cube.RightFace.Tiles[0, 0]);
@@ -633,7 +633,7 @@ namespace RubiksCubeSolver.Tests
         {
             Cube cube = GetMockCube();
 
-            cube.ReverseRotateBottom();
+            cube = cube.ReverseRotateBottom();
 
             #region TESTS
             Assert.AreEqual(TileColors.Red, cube.RightFace.Tiles[0, 0]);
