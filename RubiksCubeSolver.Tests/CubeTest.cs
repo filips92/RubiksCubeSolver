@@ -20,6 +20,104 @@ namespace RubiksCubeSolver.Tests
         }
 
         [TestMethod]
+        public void TestFaceCopyConstructor()
+        {
+            Face face1 = new Face(TileColors.Green);
+            Face face2 = face1.Copy();
+            face2.Tiles[0, 1] = TileColors.Orange;
+
+            Assert.AreEqual(TileColors.Green, face1.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Green, face1.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Green, face1.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Green, face1.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, face2.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Orange, face2.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Green, face2.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Green, face2.Tiles[1, 1]);
+        }
+
+        [TestMethod]
+        public void TestCubeCopyConstructor()
+        {
+            Cube cube1 = new Cube()
+            {
+                BottomFace = new Face(TileColors.Blue),
+                FrontFace = new Face(TileColors.Green),
+                LeftFace = new Face(TileColors.Orange),
+                RearFace = new Face(TileColors.Red),
+                RightFace = new Face(TileColors.White),
+                UpperFace = new Face(TileColors.Yellow)
+            };
+            Cube cube2 = cube1.Copy();
+            cube2.BottomFace.Tiles[0, 1] = TileColors.Yellow;
+
+            #region CUBE1
+            Assert.AreEqual(TileColors.Blue, cube1.BottomFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Blue, cube1.BottomFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Blue, cube1.BottomFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube1.BottomFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube1.FrontFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Green, cube1.FrontFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Green, cube1.FrontFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Green, cube1.FrontFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Orange, cube1.LeftFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Orange, cube1.LeftFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Orange, cube1.LeftFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Orange, cube1.LeftFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Red, cube1.RearFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Red, cube1.RearFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Red, cube1.RearFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Red, cube1.RearFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.White, cube1.RightFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.White, cube1.RightFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.White, cube1.RightFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.White, cube1.RightFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Yellow, cube1.UpperFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube1.UpperFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Yellow, cube1.UpperFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube1.UpperFace.Tiles[1, 1]);
+            #endregion
+
+            #region CUBE2
+            Assert.AreEqual(TileColors.Blue, cube2.BottomFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube2.BottomFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Blue, cube2.BottomFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Blue, cube2.BottomFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Green, cube2.FrontFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Green, cube2.FrontFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Green, cube2.FrontFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Green, cube2.FrontFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Orange, cube2.LeftFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Orange, cube2.LeftFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Orange, cube2.LeftFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Orange, cube2.LeftFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Red, cube2.RearFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Red, cube2.RearFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Red, cube2.RearFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Red, cube2.RearFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.White, cube2.RightFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.White, cube2.RightFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.White, cube2.RightFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.White, cube2.RightFace.Tiles[1, 1]);
+
+            Assert.AreEqual(TileColors.Yellow, cube2.UpperFace.Tiles[0, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube2.UpperFace.Tiles[0, 1]);
+            Assert.AreEqual(TileColors.Yellow, cube2.UpperFace.Tiles[1, 0]);
+            Assert.AreEqual(TileColors.Yellow, cube2.UpperFace.Tiles[1, 1]);
+            #endregion
+        }
+
+        [TestMethod]
         public void TestSameFacesEqualsMethod()
         {
             Face face1 = new Face(TileColors.Blue);
