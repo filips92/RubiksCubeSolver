@@ -306,5 +306,18 @@ namespace RubiksCubeSolver.Model
                 BottomFace.Equals(cube.BottomFace)
             );
         }
+
+        public Cube Copy()
+        {
+            return new Cube
+            {
+                LeftFace = LeftFace.Copy(),
+                RightFace = RightFace.Copy(),
+                FrontFace = FrontFace.Copy(),
+                RearFace = RearFace.Copy(),
+                UpperFace = UpperFace.Copy(),
+                BottomFace = BottomFace.Copy()
+            };
+    }
     }
 }
