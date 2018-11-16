@@ -354,6 +354,17 @@ namespace RubiksCubeSolver.Model
                 UpperFace = UpperFace.Copy(),
                 BottomFace = BottomFace.Copy()
             };
-    }
+        }
+
+        public bool IsSolved()
+        {
+            return
+                (LeftFace.Tiles[0, 0] == LeftFace.Tiles[0, 1] && LeftFace.Tiles[0, 0] == LeftFace.Tiles[1, 0] && LeftFace.Tiles[0, 0] == LeftFace.Tiles[1, 1]) &&
+                (RightFace.Tiles[0, 0] == RightFace.Tiles[0, 1] && RightFace.Tiles[0, 0] == RightFace.Tiles[1, 0] && RightFace.Tiles[0, 0] == RightFace.Tiles[1, 1]) &&
+                (FrontFace.Tiles[0, 0] == FrontFace.Tiles[0, 1] && FrontFace.Tiles[0, 0] == FrontFace.Tiles[1, 0] && FrontFace.Tiles[0, 0] == FrontFace.Tiles[1, 1]) &&
+                (RearFace.Tiles[0, 0] == RearFace.Tiles[0, 1] && RearFace.Tiles[0, 0] == RearFace.Tiles[1, 0] && RearFace.Tiles[0, 0] == RearFace.Tiles[1, 1]) &&
+                (UpperFace.Tiles[0, 0] == UpperFace.Tiles[0, 1] && UpperFace.Tiles[0, 0] == UpperFace.Tiles[1, 0] && UpperFace.Tiles[0, 0] == UpperFace.Tiles[1, 1]) &&
+                (BottomFace.Tiles[0, 0] == BottomFace.Tiles[0, 1] && BottomFace.Tiles[0, 0] == BottomFace.Tiles[1, 0] && BottomFace.Tiles[0, 0] == BottomFace.Tiles[1, 1]);
+        }
     }
 }
